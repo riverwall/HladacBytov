@@ -4,6 +4,7 @@ package sk.hlavco.hladacBytov;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,8 @@ public class PropertyFile {
 
     private boolean isInPropertyFile(String key, String file){
         try {
-            FileInputStream in = new FileInputStream(file);
+            String filePath = getClass().getClassLoader().getResource(file).getFile();
+            FileInputStream in = new FileInputStream(filePath);
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -60,7 +62,8 @@ public class PropertyFile {
 
     private String findInPropertyFile(String key, String file){
         try {
-            FileInputStream in = new FileInputStream(file);
+            String filePath = getClass().getClassLoader().getResource(file).getFile();
+            FileInputStream in = new FileInputStream(filePath);
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -88,13 +91,14 @@ public class PropertyFile {
 
         try {
             //read
-            FileInputStream in = new FileInputStream(file);
+            String filePath = getClass().getClassLoader().getResource(file).getFile();
+            FileInputStream in = new FileInputStream(filePath);
             Properties props = new Properties();
             props.load(in);
             in.close();
 
             //write
-            FileOutputStream out = new FileOutputStream(file);
+            FileOutputStream out = new FileOutputStream(filePath);
             props.setProperty(key, value);
             props.store(out, null);
             out.close();
