@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HladacBytov.iml" filepath="$PROJECT_DIR$/HladacBytov.iml" />
+      <module fileurl="file://$USER_HOME$/HladacBytovRunner/src/sk/hlavco/HladacBytovRunner/HladacBytovRunner.iml" filepath="$USER_HOME$/HladacBytovRunner/src/sk/hlavco/HladacBytovRunner/HladacBytovRunner.iml" />
     </modules>
   </component>
 </project>

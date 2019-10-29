@@ -12,8 +12,8 @@ public class PropertyFile {
 
     private static final Logger LOGGER = Logger.getLogger( PropertyFile.class.getName() );
 
-    private String advertisementFile = "src/sk/hlavco/hladacBytov/resources/Advertisements.properties";
-    private String configFile = "src/sk/hlavco/hladacBytov/resources/Config.properties";
+    private String advertisementFile = "resources/Advertisements.properties";
+    private String configFile = "resources/Config.properties";
 
     public boolean isInAdvertisementFile(String key){
         return isInPropertyFile(key, advertisementFile);
