@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HladacBytovRunner:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="HladacBytovRunner.jar">
+      <element id="module-output" name="HladacBytovRunner" />
+    </root>
+  </artifact>
+</component>

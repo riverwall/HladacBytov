@@ -4,7 +4,6 @@ package sk.hlavco.hladacBytov;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,8 +12,8 @@ public class PropertyFile {
 
     private static final Logger LOGGER = Logger.getLogger( PropertyFile.class.getName() );
 
-    private String advertisementFile = "resources/Advertisements.properties";
-    private String configFile = "resources/Config.properties";
+    private String advertisementFile = "Advertisements.properties";
+    private String configFile = "Config.properties";
 
     public boolean isInAdvertisementFile(String key){
         return isInPropertyFile(key, advertisementFile);
@@ -38,8 +37,8 @@ public class PropertyFile {
 
     private boolean isInPropertyFile(String key, String file){
         try {
-            String filePath = getClass().getClassLoader().getResource(file).getFile();
-            FileInputStream in = new FileInputStream(filePath);
+//           String filePath = getClass().getClassLoader().getResource(file).getFile();
+            FileInputStream in = new FileInputStream(file);
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -62,8 +61,7 @@ public class PropertyFile {
 
     private String findInPropertyFile(String key, String file){
         try {
-            String filePath = getClass().getClassLoader().getResource(file).getFile();
-            FileInputStream in = new FileInputStream(filePath);
+            FileInputStream in = new FileInputStream(file);
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -91,14 +89,14 @@ public class PropertyFile {
 
         try {
             //read
-            String filePath = getClass().getClassLoader().getResource(file).getFile();
-            FileInputStream in = new FileInputStream(filePath);
+//            String filePath = getClass().getClassLoader().getResource(file).getFile();
+            FileInputStream in = new FileInputStream(file);
             Properties props = new Properties();
             props.load(in);
             in.close();
 
             //write
-            FileOutputStream out = new FileOutputStream(filePath);
+            FileOutputStream out = new FileOutputStream(file);
             props.setProperty(key, value);
             props.store(out, null);
             out.close();

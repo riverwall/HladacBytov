@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainJob {
@@ -19,7 +21,13 @@ public class MainJob {
 
     private static final Logger LOGGER = Logger.getLogger( MainJob.class.getName() );
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        FileHandler fh;
+        fh = new FileHandler("LOGS.log");
+        LOGGER.addHandler(fh);
+
+        LOGGER.log(Level.INFO, "Start iteration");
 
         MainJob mainJob = new MainJob();
         mainJob.oneIteration();
