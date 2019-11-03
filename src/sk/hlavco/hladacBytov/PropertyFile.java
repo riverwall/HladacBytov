@@ -1,9 +1,12 @@
 package sk.hlavco.hladacBytov;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,10 +38,26 @@ public class PropertyFile {
         return findInPropertyFile(key, configFile);
     }
 
+    public String getPathToFile(String fileName){
+
+        File dir = new File(PropertyFile.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+
+        System.out.println("TATO TRIEDA JE V ADRESARI: " + dir.toString());
+
+        if(dir.toString().contains(".jar")) {
+            File filePath = new File(dir.getParentFile(), fileName);
+
+            System.out.println("PRACUJEM SO SUBOROM: " + filePath.toString());
+
+            return filePath.toString();
+        }
+        return fileName;
+    }
+
     private boolean isInPropertyFile(String key, String file){
         try {
-//           String filePath = getClass().getClassLoader().getResource(file).getFile();
-            FileInputStream in = new FileInputStream(file);
+
+            FileInputStream in = new FileInputStream(getPathToFile(file));
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -61,7 +80,7 @@ public class PropertyFile {
 
     private String findInPropertyFile(String key, String file){
         try {
-            FileInputStream in = new FileInputStream(file);
+            FileInputStream in = new FileInputStream(getPathToFile(file));
             Properties props = new Properties();
             props.load(in);
             in.close();
@@ -90,13 +109,13 @@ public class PropertyFile {
         try {
             //read
 //            String filePath = getClass().getClassLoader().getResource(file).getFile();
-            FileInputStream in = new FileInputStream(file);
+            FileInputStream in = new FileInputStream(getPathToFile(file));
             Properties props = new Properties();
             props.load(in);
             in.close();
 
             //write
-            FileOutputStream out = new FileOutputStream(file);
+            FileOutputStream out = new FileOutputStream(getPathToFile(file));
             props.setProperty(key, value);
             props.store(out, null);
             out.close();

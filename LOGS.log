@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-10-30T21:14:04</date>
-  <millis>1572466444490</millis>
+  <date>2019-11-03T21:50:32</date>
+  <millis>1572814232637</millis>
   <sequence>0</sequence>
   <logger>sk.hlavco.hladacBytov.MainJob</logger>
   <level>INFO</level>
@@ -12,3 +12,4 @@
   <thread>1</thread>
   <message>Start iteration</message>
 </record>
+</log>

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class MainJob {
 
-    PropertyFile propFile = new PropertyFile();
+    static PropertyFile propFile = new PropertyFile();
     GoogleMail gMail = new GoogleMail();
 
 
@@ -24,7 +24,7 @@ public class MainJob {
     public static void main(String[] args) throws IOException {
 
         FileHandler fh;
-        fh = new FileHandler("LOGS.log");
+        fh = new FileHandler(propFile.getPathToFile("LOGS.log"));
         LOGGER.addHandler(fh);
 
         LOGGER.log(Level.INFO, "Start iteration");
