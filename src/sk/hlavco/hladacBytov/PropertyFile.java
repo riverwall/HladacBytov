@@ -15,19 +15,31 @@ public class PropertyFile {
 
     private static final Logger LOGGER = Logger.getLogger( PropertyFile.class.getName() );
 
-    private String advertisementFile = "Advertisements.properties";
+    private String advertisementFileN = "Inzeraty_nehnutelnosti.properties";
+    private String advertisementFileT = "Inzeraty_topreality.properties";
     private String configFile = "Config.properties";
 
-    public boolean isInAdvertisementFile(String key){
-        return isInPropertyFile(key, advertisementFile);
+    private String getAdvertisementFileName(int portal){
+
+        if(portal == 1){
+            return advertisementFileN;
+
+        } else {
+            return advertisementFileT;
+        }
     }
 
-    public String findInAdvertisementFile(String key){
-        return findInPropertyFile(key, advertisementFile);
+    public boolean isInAdvertisementFile(String key, int portal){
+
+        return isInPropertyFile(key, getAdvertisementFileName(portal));
     }
 
-    public void saveToAdvertisementFile(String key, String value){
-        saveToPropertyFile(key, value, advertisementFile);
+    public String findInAdvertisementFile(String key, int portal){
+        return findInPropertyFile(key, getAdvertisementFileName(portal));
+    }
+
+    public void saveToAdvertisementFile(String key, String value, int portal){
+        saveToPropertyFile(key, value, getAdvertisementFileName(portal));
     }
 
     public boolean isInConfigFile(String key){
@@ -42,7 +54,7 @@ public class PropertyFile {
 
         File dir = new File(PropertyFile.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 
-        System.out.println("TATO TRIEDA JE V ADRESARI: " + dir.toString());
+//        System.out.println("TATO TRIEDA JE V ADRESARI: " + dir.toString());
 
         if(dir.toString().contains(".jar")) {
             File filePath = new File(dir.getParentFile(), fileName);

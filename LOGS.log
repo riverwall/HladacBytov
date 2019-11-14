@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2019-11-03T21:50:32</date>
-  <millis>1572814232637</millis>
+  <date>2019-11-14T22:08:49</date>
+  <millis>1573765729106</millis>
   <sequence>0</sequence>
   <logger>sk.hlavco.hladacBytov.MainJob</logger>
   <level>INFO</level>
